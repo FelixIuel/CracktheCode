@@ -30,7 +30,7 @@ load_dotenv()
 
 # Set up the Flask app and enable CORS for frontend communication
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000", "methods": ["GET", "POST", "OPTIONS"]}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # MongoDB and JWT configuration
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost:27017/crackthecode")
@@ -680,5 +680,5 @@ def complete_category():
 
 ## Start the Flask app - Look for print statements to confirm it's running
 if __name__ == '__main__':
-    print("Starting Flask app on http://127.0.0.1:5000 - so it running now")
-    app.run(debug=True)
+    print("Starting Flask app on http://0.0.0.0:5000 - so it running now")
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
