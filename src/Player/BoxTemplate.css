@@ -1,0 +1,18 @@
+.noir-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for that noir feel */
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 20px black;
+    font-family: 'Courier New', Courier, monospace; /* For that detective noir vibe */
+  }
+  
+  .noir-box h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: white;
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  

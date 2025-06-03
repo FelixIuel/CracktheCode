@@ -1,0 +1,35 @@
+/* Container for the streak box */
+.streak-box {
+  grid-column: span 1;
+  text-align: center;
+}
+
+/* Container for the metrics  */
+.streak-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Individual item styling  */
+.streak-item {
+  background: wheat;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 16px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Styling for the label */
+.label {
+  font-weight: bold;
+}
+
+/* Styling for the value part of the metric */
+.value {
+  color: black;
+}

@@ -1,0 +1,232 @@
+/* Main container for the friends box */
+.friends-box {
+  grid-column: span 2;
+}
+
+/* Section spacing */
+.section {
+  margin-bottom: 20px;
+}
+
+/* Styles for friend, group, and request list items */
+.friend-item,
+.group-item,
+.request-item {
+  background: wheat;
+  border: 1px solid black;
+  padding: 6px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Container for accept/decline buttons on requests */
+.request-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Individual request buttons - both accept and decline*/
+.request-buttons button {
+  width: 32px;
+  height: 32px;
+  background-color: darkgreen;
+  border: 1px solid black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Section title styling, aligns title and actions */
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Friend search input styling */
+.friend-search {
+  padding: 6px 12px;
+  font-size: 14px;
+  width: 180px;
+  font-family: inherit;
+  background-color: #f7e5ba;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  height: 40px;
+}
+
+/* Group form containers */
+.group-join,
+.group-create {
+  display: flex;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+/* Input fields for group join/create */
+.group-join input,
+.group-create input {
+  flex: 1;
+  padding: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+}
+
+/* Buttons for group join/create */
+.group-join button,
+.group-create button {
+  padding: 8px 12px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  height: 40px;
+}
+
+/* Message shown after joining/creating group */
+.group-code-msg {
+  font-size: 13px;
+  margin-top: 8px;
+  color: black;
+}
+
+/* Dimmed/secondary text */
+.dim {
+  color: black;
+  font-style: italic;
+}
+
+/* Send friend request and send message buttons */
+.send-button,
+.send-request-button {
+  padding: 6px 12px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  height: 40px;
+}
+
+/* Remove friend and chat buttons */
+.remove-btn,
+.chat-btn {
+  padding: 6px 12px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  height: 40px;
+}
+
+/* Adds spacing to the chat button */
+.chat-btn {
+  margin-right: 8px;
+}
+
+/* Hover effect for chat and remove buttons */
+.chat-btn:hover,
+.remove-btn:hover {
+  background-color: #e2c17f;
+}
+
+/* Container for friend's profile picture */
+.friend-profilepic-container {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Friend's profile picture image */
+.friend-profilepic {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+/* Placeholder for missing profile picture */
+.friend-profilepic.placeholder {
+  background-color: white;
+  border: 1px solid black;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Container for friend's info (profile pic + name) */
+.friend-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Search results list styling */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* User item in search results */
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: wheat;
+  padding: 6px 10px;
+  border: 1px solid black;
+}
+
+/* Chat icon styling */
+.chat-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Chat icon hover effect */
+.chat-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Status message styling */
+.status-message {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Button to close the search results */
+.close-search-button {
+  align-self: flex-end;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 10px;
+}

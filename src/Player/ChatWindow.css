@@ -1,0 +1,93 @@
+/* Chat Overlay: make sure it in front and visible */
+.chat-overlay {
+  position: fixed; /* this should be fixed to the viewport*/
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 500px; /* size of the chat window   */
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid black;
+  z-index: 1000;
+  box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Window: Main container for chat content */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 15px;
+  background-color: white;
+}
+
+/* Chat Header: Contains the title and close button for that nice user interface */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+}
+
+/* Close Button*/
+.close-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Chat Messages: Most important here is the scrolling part */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+}
+
+/* Individual Chat Message   */
+.chat-message {
+  margin-bottom: 10px;
+}
+
+/* Chat Input Area: Container for input and send button */
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #aaa;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Send Button Styling - once again ensuring uniformity */
+.chat-input-area button {
+  padding: 8px 12px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat-input-area button:hover {
+  background-color: #e2c17f;
+}

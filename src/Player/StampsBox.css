@@ -1,0 +1,76 @@
+/* Container for the entire stamps box */
+.stamps-box {
+  grid-column: span 2;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading inside the stamps box */
+.stamps-box h2 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Grid container for all stamp items */
+.stamps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Wrapper for each individual stamp */
+.stamp-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  padding: 8px;
+  width: 64px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+/* Slightly enlarge the stamp when mouse hovers there */
+.stamp-wrapper:hover {
+  transform: scale(1.05);
+}
+
+/* Stamp image styling inside wrapper */
+.stamp-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Stamp image base style */
+.stamp-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+/* Remove grayscale filter for active stamps */
+.stamp-image.active {
+  filter: none;
+}
+
+/* Label below each stamp */
+.stamp-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+}

@@ -1,0 +1,104 @@
+/* Wrapper for the entire categories section */
+.categories-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Title styling for the categories page */
+.categories-title {
+  font-size: 36px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 20px;
+}
+
+/* Container for all category stamps, using flex for layout */
+.categories-stamps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Individual category stamp styling */
+.category-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+/* Image inside each category stamp */
+.category-stamp img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Name label under each category stamp */
+.category-name {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Highlight selected category stamp with a green glow */
+.category-stamp.selected {
+  filter: grayscale(100%) drop-shadow(0 0 10px limegreen);
+}
+
+/* Container overrides for layout, disables default backgrounds and shadows */
+.container {
+  max-width: none;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+}
+
+/* Prevent horizontal scroll, allow vertical scroll */
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Popup message styling (centered, with green border and shadow) */
+.popup-message {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: black;
+  border: 2px solid limegreen;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 30px;
+  border-radius: 8px;
+  z-index: 9999;
+  box-shadow: 0 0 20px limegreen;
+  text-align: center;
+}
+
+/* Button inside popup message */
+.popup-message button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: limegreen;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.category-stamp.selected,
+.category-stamp.cleared {
+  filter: none;
+}

@@ -1,0 +1,410 @@
+/* 
+  App.css - Main styling for Crack the Code game UI.
+  Handles layout, backgrounds, game area, inputs, overlays, and animations.
+  Good luck remembering it, where the different things are, this is why you should always comment as you go!
+*/
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100px;
+  padding-bottom: 300px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.game-area {
+  width: 90vw;
+  max-width: 1200px;
+  margin-top: 20px;
+  background-image: url('./assets/pictures/general/parchment-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: 1px solid #c2b280;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: none;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 95vw;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+}
+
+.number-label {
+  margin-top: 5px;
+  font-size: 14px;
+  color: black;
+  height: 16px;
+}
+
+input {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input.correct {
+  background-color: lightgreen;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: darkblue;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  background-color: #1f1f1f;
+  padding: 1rem 2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid #333;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-top: -5px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.category {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hint {
+  font-size: 16px;
+  color: #555;
+}
+
+.word-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+  flex-shrink: 0;
+}
+
+.space-box {
+  width: 20px;
+}
+
+.incorrect {
+  border: 2px solid red;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+}
+
+.life-bar {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.heart {
+  color: red;
+  margin-right: 5px;
+}
+
+.heart.empty {
+  color: lightgray;
+}
+
+.correct-input {
+  border: 2px solid green;
+  background-color: #d4edda;
+  pointer-events: none;
+}
+
+.hint-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  animation: rotateHint 2s infinite ease-in-out alternate;
+  position: relative;
+  align-self: center;
+}
+
+@keyframes rotateHint {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
+
+.hint-image {
+  width: 40px;
+  height: 40px;
+}
+
+.success-message {
+  position: relative;
+  top: -30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: green;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+@keyframes fadeInScale {
+  0% {
+      opacity: 0;
+      transform: scale(0.8);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.animate-correct {
+  animation: fadeInScale 0.5s ease-in-out;
+}
+
+.game-over-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.99);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.4s ease;
+}
+
+.game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.9);
+  background-filter: blur(3px);
+  z-index: 999;
+}
+
+.game-over-screen h2 {
+  color: red;
+}
+
+.game-over-screen input {
+  width: 250px;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.game-over-screen button {
+  background: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game-over-screen button:hover {
+  background: darkblue;
+}
+
+.full-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.game-over-character {
+  position: absolute;
+  bottom: 10px;
+  right: 50%;
+  transform: translateX(50%);
+  animation: shake 1.5s infinite ease-in-out alternate;
+}
+
+@keyframes shake {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+.bogus-text {
+  position: absolute;
+  top: 50%;
+  left: 120%;
+  transform: translateY(-50%);
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.hint-text {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.speech-bubble {
+  margin-top: 10px;
+  background: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  text-align: center;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav a {
+  margin-right: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f0f0f0;
+}
+
+.floating-box {
+  display: none;
+}
+
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

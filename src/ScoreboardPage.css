@@ -1,0 +1,194 @@
+/* Main wrapper for the scoreboard page */
+.scoreboard-page-wrapper {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Wrapper for background image and overlay */
+.scoreboard-background-wrapper {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background image styling */
+.scoreboard-background-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 0;
+}
+
+/* Overlay containing the scoreboard columns */
+.scoreboard-overlay {
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 2;
+  pointer-events: none; /* Prevent overlay from blocking interactions */
+}
+
+/* Scoreboard columns */
+.score-column {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: black;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  width: 50%;
+  height: 100%;
+}
+
+/* Left column specific styles */
+.score-column.left {
+  padding-left: 60px;
+  align-items: flex-start;
+}
+
+/* Right column specific styles */
+.score-column.right {
+  padding-left: 60px;
+  align-items: flex-start;
+}
+
+/* Header for each score column */
+.score-header {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* List of scores */
+.score-list {
+  flex-grow: 1;
+}
+
+/* Individual score entry */
+.score-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 10px;
+  border-bottom: 1px dashed #999;
+}
+
+/* Line containing score info */
+.score-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Additional score details */
+.score-details {
+  font-size: 14px;
+  color: #333;
+  font-style: italic;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+/* Wrapper for navigation arrows */
+.arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Arrow button styling */
+.arrow-button {
+  width: 24px;
+  height: auto;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Expand/collapse icon styling */
+.expand-icon {
+  width: 18px;
+  height: auto;
+  cursor: pointer;
+  margin-left: 10px;
+  pointer-events: auto;
+}
+
+/* Guest prompt popup styling */
+.guest-prompt-wrapper {
+  position: absolute;
+  top: 78%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Guest image styling */
+.guest-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  pointer-events: auto;
+}
+
+/* Guest prompt text styling */
+.guest-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: black;
+}
+
+/* Link styling inside guest prompt */
+.guest-text span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Responsive adjustments for large screens */
+@media (min-width: 1800px) {
+  .score-column.right {
+    padding-left: 250px;
+  }
+
+  .guest-prompt-wrapper {
+    top: 100%;
+    left: 23%;
+  }
+}
+
+/* Prevent images from being dragged or selected */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Allow pointer events and cursor for interactive elements */
+.arrow-button,
+.expand-icon,
+.guest-image {
+  pointer-events: auto;
+  cursor: pointer;
+}

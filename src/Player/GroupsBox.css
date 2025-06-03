@@ -1,0 +1,115 @@
+/* The main box for all group   */
+.groups-box {
+  background-color: rgba(255, 255, 255, 0.2); /* make it a bit transparent   */
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Group box header – to make it pop */
+.groups-box h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: black;
+}
+
+/* Layout for searching and creating groups, since teamwork makes the dream work   */
+.group-search,
+.group-create {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Inputs for group search/create */
+.group-search input,
+.group-create input {
+  flex: 1;
+  padding: 8px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  color: black;
+  font-family: inherit;
+}
+
+/* Buttons for groups */
+.group-search button,
+.group-create button {
+  padding: 8px 12px;
+  background-color: #f7e5ba;
+  border: 1px solid black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+/* Each group item and owned group */
+.group-item,
+.group-owned {
+  background-color: wheat; /* Since it need to match background and all the other buttons */
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Password input for group join */
+.group-item input[type="password"] {
+  padding: 6px;
+  border: 1px solid black;
+  font-family: inherit;
+  background-color: #fff8e1;
+}
+
+/* Buttons inside group items - keep them inside since it look bad else */
+.group-item button,
+.group-owned button {
+  align-self: flex-start;
+  padding: 6px 10px;
+  border: 1px solid black;
+  background-color: #f7e5ba;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* List of members in owned groups - Ready to be kicked if needed */
+.group-owned ul {
+  margin-top: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+/*.group-item:hover { 
+    background-color: green; 
+} 
+Keept for if implementing later, if decided to be needed*/
+
+/* Each member in the lis */
+.group-owned li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+/* Kick button for members   */
+.group-owned li button {
+  margin-left: 10px;
+  background-color: darkred; /* Ban Hammer */
+  color: white;
+  border: 1px solid black;
+  font-size: 12px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+/* Dimmed text */
+.dim {
+  font-style: italic;
+  color: black;
+  margin-top: 10px;
+}
