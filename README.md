@@ -56,9 +56,3 @@ The backend will be available at: [http://127.0.0.01:500] / [http://localhost:50
    `npm start`
 
 The frontend will run at: [http://localhost:3000]
-
-```
-REACT_APP_API_URL=http://localhost:5000
-```
-
-All API requests in React use this base URL.
