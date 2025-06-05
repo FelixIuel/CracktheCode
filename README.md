@@ -57,12 +57,6 @@ The backend will be available at: [http://127.0.0.01:500] / [http://localhost:50
 
 The frontend will run at: [http://localhost:3000]
 
----
-
-## API Connection
-
-The frontend communicates with the backend using an environment variable configured in `src/.env`:
-
 ```
 REACT_APP_API_URL=http://localhost:5000
 ```
