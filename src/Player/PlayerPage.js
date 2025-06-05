@@ -30,12 +30,12 @@ const PlayerPage = ({ onLoginClick, onSignupClick, isLoggedIn }) => {
       return;
     }
     // Check token validity with backend
-    fetch("http://localhost:5000/user-profile", {
+    fetch("http://localhost:5000/loggedin-player-profile", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
       .then(data => {
-        if (data.success) {
+        if (data && !data.error) {
           setIsAuthenticated(true);
           setLoadError(false);
         } else {

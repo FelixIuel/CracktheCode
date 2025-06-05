@@ -43,7 +43,7 @@ const DailyLetterPuzzle = ({ onLoginClick, onSignupClick, isLoggedIn }) => {
 
         // If the player already played today, show the black screen
         if (data.error) {
-          if (data.error === "Already played today") {
+          if (data.error === "This Player has already played it") {
             setTimeout(() => setShowBlackScreen(true), 500);
             setAlreadyPlayed(true);
           }
@@ -94,12 +94,12 @@ const DailyLetterPuzzle = ({ onLoginClick, onSignupClick, isLoggedIn }) => {
         const data = await res.json();
         if (data.success) {
           // Fetch the updated player profile to get the new streak
-          const profileRes = await fetch("http://127.0.0.1:5000/user-profile", {
+          const profileRes = await fetch("http://127.0.0.1:5000/loggedin-player-profile", {
             headers: { Authorization: `Bearer ${token}` }
           });
           const profileData = await profileRes.json();
-          if (profileData.success && profileData.user.streak) {
-            localStorage.setItem("playerStreak", JSON.stringify(profileData.user.streak));
+          if (profileData.streak) {
+            localStorage.setItem("playerStreak", JSON.stringify(profileData.streak));
           }
         }
       } catch (err) {

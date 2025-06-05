@@ -20,22 +20,17 @@ const DailyStreakBox = () => {
     // Fetch fresh data from backend — overrides cache if newer
     const fetchStreak = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user-profile", {
+        const res = await fetch("http://localhost:5000/loggedin-player-profile", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
         const data = await res.json();
-        if (data.success && data.user.streak) {
-          setCurrentStreak(data.user.streak.current || 0);
-          setLongestStreak(data.user.streak.longest || 0);
-
-          // Save updated data to localStorage so we reuse it later
-          localStorage.setItem(
-            "playerStreak",
-            JSON.stringify(data.user.streak)
-          );
+        if (data.success && data.streak) {
+          setCurrentStreak(data.streak.current || 0);
+          setLongestStreak(data.streak.longest || 0);
+          localStorage.setItem("playerStreak", JSON.stringify(data.streak));
         }
       } catch (err) {
         console.error("Failed to fetch streak info:", err);

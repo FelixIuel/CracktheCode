@@ -18,15 +18,15 @@ const PlayerInfoBox = (props) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user-profile", {
+        const res = await fetch("http://localhost:5000/loggedin-player-profile", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        const data = await res.json();
-        if (data.success) {
-          setPlayerData(data.user);
-          setTempAbout(data.user.about || "");
+        if (res.ok) {
+          const data = await res.json();
+          setPlayerData(data);
+          setTempAbout(data.about || "");
         }
       } catch (err) {
         console.error("Failed to fetch profile:", err);
@@ -39,7 +39,7 @@ const PlayerInfoBox = (props) => {
   // Save the edited "About Me" text to the backend
   const handleSave = async () => {
     try {
-      const res = await fetch("http://localhost:5000/update-profile", {
+      const res = await fetch("http://localhost:5000/updating-player-profile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const PlayerInfoBox = (props) => {
     formData.append("picture", file);
 
     try {
-      const res = await fetch("http://localhost:5000/upload-picture", {
+      const res = await fetch("http://localhost:5000/upload-profilepic", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -81,7 +81,6 @@ const PlayerInfoBox = (props) => {
 
       const data = await res.json();
       if (data.success) {
-        // Update local state with new profile picture path
         setPlayerData({ ...playerData, picture: data.picture });
       }
     } catch (err) {

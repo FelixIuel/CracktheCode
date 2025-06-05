@@ -32,7 +32,7 @@ const ScoreboardPage = ({ onLoginClick, onSignupClick, isLoggedIn }) => {
 
     if (isLoggedIn) {
       const token = localStorage.getItem("token");
-      fetch("http://127.0.0.1:5000/my-scores", {
+      fetch("http://127.0.0.1:5000/loggedin-player-scores", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())

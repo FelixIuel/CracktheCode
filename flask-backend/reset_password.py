@@ -1,24 +1,37 @@
 import pymongo
 from flask_bcrypt import Bcrypt
+import os
+from dotenv import load_dotenv
 
-# Setup MongoDB connection
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+
+load_dotenv()
+MONGO_URI = os.getenv("MONGO_URI")
+
+client = pymongo.MongoClient(MONGO_URI)
 db = client["crackthecode"]
-users = db["users"]
+players = db["players"]
 
 bcrypt = Bcrypt()
 
-username = input("Enter the username: ").strip()
-new_password = input("Enter the new password: ").strip()
+while True:
+    username = input("Username: ").strip()
+    player = players.find_one({"username": username})
+    if player:
+        break
+    print("Player was not found. Please try again.")
 
-hashed_pw = bcrypt.generate_password_hash(new_password).decode('utf-8')
+pw = input("Type new password: ").strip()
 
-result = users.update_one(
+# Hash the new password
+hashed = bcrypt.generate_password_hash(pw).decode('utf-8')
+
+# Update the user's password
+res = players.update_one(
     {"username": username},
-    {"$set": {"password": hashed_pw}}
+    {"$set": {"password": hashed}}
 )
 
-if result.modified_count:
-    print("Password updated successfully!")
+if res.modified_count:
+    print("Password changed.")
 else:
-    print("User not found or password not changed.")
+    print("Password was not changed.")

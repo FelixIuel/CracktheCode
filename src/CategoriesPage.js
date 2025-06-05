@@ -45,7 +45,7 @@ function CategoriesPage({ onLoginClick, onSignupClick, isLoggedIn }) {
   useEffect(() => {
     const fetchStamps = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user-profile", {
+        const res = await fetch("http://localhost:5000/loggedin-player-profile", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -53,6 +53,9 @@ function CategoriesPage({ onLoginClick, onSignupClick, isLoggedIn }) {
         const data = await res.json();
         if (data.success && Array.isArray(data.user.stamps)) {
           setClearedCategories(data.user.stamps);
+        }
+        if (Array.isArray(data.stamps)) {
+          setClearedCategories(data.stamps);
         }
       } catch (err) {
         console.error("Failed to fetch player stamps:", err);

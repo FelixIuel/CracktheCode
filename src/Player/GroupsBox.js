@@ -25,7 +25,7 @@ const GroupsBox = ({ onChat }) => {
 
   // Grab all the groups the player is a part of
   const fetchGroups = () => {
-    fetch('http://localhost:5000/my-groups', {
+    fetch('http://localhost:5000/players-groups', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(res => res.json())
@@ -101,7 +101,7 @@ const GroupsBox = ({ onChat }) => {
       });
     } else {
       // Fetch member list fresh
-      fetch(`http://localhost:5000/group-members/${groupname}`, {
+      fetch(`http://localhost:5000//group-members/${groupname}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())

@@ -1,65 +1,65 @@
-## Script to add new puzzles to a specific category collection in the Crack the Code database.
-## Make sure MongoDB is running and pymongo is installed.
-## Run this script, enter the category (collection) name, and add puzzles if the collection exists.
-
 import pymongo
 import random
 import string
+import os
+from dotenv import load_dotenv
 
-# Setup MongoDB connection
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+load_dotenv()
+MONGO_URI = os.getenv("MONGO_URI")
+
+client = pymongo.MongoClient(MONGO_URI)
 db = client["crackthecode"]
 
-def generate_letter_map():
-    alphabet = list(string.ascii_lowercase)
-    numbers = random.sample(range(1, 27), 26)
-    return {letter: numbers[i] for i, letter in enumerate(alphabet)}
+def make_letter_map():
+    alpha = string.ascii_lowercase
+    nums = random.sample(range(1, 27), 26)
+    return {ch: nums[i] for i, ch in enumerate(alpha)}
 
-def get_revealed_letters(sentence, count=3):
-    letters = list(set([char.lower() for char in sentence if char.isalpha()]))
-    revealed = random.sample(letters, min(count, len(letters)))
-    return revealed
+def pick_revealed(sentence, n=3):
+    chars = [c.lower() for c in sentence if c.isalpha()]
+    unique = list(set(chars))
+    return random.sample(unique, min(n, len(unique))) if unique else []
 
 def main():
-    print("\n=== Add Puzzles to a Category ===")
-    category = input("Enter the category (collection) you want to add puzzles to: ").strip()
+    print("\n Choose a category for adding a sentence")
+    category = input("What category: ").strip()
     if category not in db.list_collection_names():
-        print(f"Collection '{category}' does not exist. Please create it first or check the name.")
+        print(f"'{category}' was not found.")
         return
 
     collection = db[category]
+
     while True:
-        print("\n--- Add New Puzzle ---")
-        sentence = input("Enter the sentence (or leave blank to quit): ").strip()
+        print("\nType in the sentence")
+        sentence = input("Sentence (leave blank to stop): ").strip()
         if not sentence:
-            print("Exiting.")
+            print("Done. Exiting.")
             break
-        hint = input("Enter the hint: ").strip()
 
-        letter_map = generate_letter_map()
-        revealed_letters = get_revealed_letters(sentence, random.randint(2, 4))
+        hint = input("Hint: ").strip()
 
-        # Show preview for confirmation
-        print("\n--- Preview ---")
-        print(f"Category/Collection: {category}")
+        lmap = make_letter_map()
+        Letterrevealed = pick_revealed(sentence, random.randint(2, 4))
+
+        # Preview
+        print("\nCheck your input:")
+        print(f"Collection: {category}")
         print(f"Sentence: {sentence}")
         print(f"Hint: {hint}")
-        print(f"Revealed Letters: {revealed_letters}")
-        print("----------------------")
+        print(f"Revealed: {Letterrevealed}")
+        print("----------------")
 
-        confirm = input("Is this correct? (y/n): ").strip().lower()
-        if confirm == 'y':
-            doc = {
+        if input("Save it? (type y to save): ").strip().lower() == 'y':
+            collection.insert_one({
                 "sentence": sentence,
                 "category": category,
                 "hint": hint,
-                "letterMap": letter_map,
-                "revealedLetters": revealed_letters
-            }
-            collection.insert_one(doc)
-            print("Puzzle added to the database!")
+                "letterMap": lmap,
+                "revealedLetters": Letterrevealed
+            })
+            print("Sentences has been Saved")
         else:
-            print("Puzzle was not added to the database!")
+            print("Sentences not saved")
 
 if __name__ == "__main__":
     main()

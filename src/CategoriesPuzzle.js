@@ -52,12 +52,16 @@ const CategoriesPuzzle = ({ selectedCategory }) => {
     fetch(`http://127.0.0.1:5000/get-category/${selectedCategory}`)
       .then((res) => res.json())
       .then((fetchedData) => {
-        const formatted = fetchedData.map(item => ({
-          sentence: item.sentence,
-          hint: item.hint
-        }));
-        setSentences(formatted);
-        setCurrentSentenceIndex(0);
+        if (fetchedData.success && Array.isArray(fetchedData.sentences)) {
+          const formatted = fetchedData.sentences.map(item => ({
+            sentence: item.sentence,
+            hint: item.hint
+          }));
+          setSentences(formatted);
+          setCurrentSentenceIndex(0);
+        } else {
+          setSentences([]);
+        }
       })
       .catch((err) => {
         console.error("Failed to load category data:", err);

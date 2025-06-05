@@ -56,7 +56,7 @@ const FriendsBox = ({ onChat }) => {
     setStatusMessage('Searching...');
     setShowSearchResults(true);
 
-    fetch(`http://localhost:5000/search-users/${searchQuery}`, {
+    fetch(`http://localhost:5000/search-players/${searchQuery}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

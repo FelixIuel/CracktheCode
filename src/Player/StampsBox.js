@@ -29,15 +29,14 @@ const StampsBox = () => {
     // Fetch the player's collected stamps from the backend
     const fetchStamps = async () => {
       try {
-        const res = await fetch("http://localhost:5000/user-profile", {
+        const res = await fetch("http://localhost:5000/loggedin-player-profile", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const data = await res.json();
-        // If the fetch is successful, and we can go home early
-        if (data.success && Array.isArray(data.user.stamps)) {
-          setClearedCategories(data.user.stamps);
+        if (Array.isArray(data.stamps)) {
+          setClearedCategories(data.stamps);
         }
       } catch (err) {
         console.error("Failed to fetch player stamps:", err);
